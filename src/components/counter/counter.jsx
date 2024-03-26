@@ -14,6 +14,8 @@ import {
 const Counter = () => {
     const { stateCounter, dispatchCounter } = useStore();
     const { counter } = stateCounter;
+
+    
     return (
         <ButtonGroup aria-label="Basic example">
             <Button

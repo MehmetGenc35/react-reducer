@@ -1,14 +1,12 @@
 import React from 'react'
 import { StoreProvider } from './store'
-import Counter from './components/counter/counter'
+import AppRouter from './router'
 
 const App = () => {
   return (
 
     <StoreProvider>
-      <div>
-        <Counter />
-      </div>
+      <AppRouter/>
     </StoreProvider>
     
   )

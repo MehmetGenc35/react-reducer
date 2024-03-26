@@ -3,6 +3,8 @@
 import { createContext, useContext, useReducer } from "react";
 import { counterReducer } from "./counter/reducer";
 import { counterInitialState } from "./counter/initial-state";
+import { userReducer } from "./user/reducer";
+import { userInitialState } from "./user/initial-state";
 
 
 //boş merkezi state oluşturuldu
@@ -24,11 +26,19 @@ export const StoreProvider = ({children}) => {
   //stateCounter==>counter ın değeri
   //dispatchCountery==>counterı değiştirecek fonksiyonu verecek olan yer
 
+  //user için getter ve setter kısmını oluşturuyoruz
+  const [stateUser, dispatchUser] = useReducer(userReducer, userInitialState);
+
+
+
+  //value nun iiç kalabalık olmasın diye yaptık
+   const state = { stateCounter, dispatchCounter, stateUser, dispatchUser };
+
 
 
   //uygulamanın her yerinden ulaşmak için value içerisine getter ve setter ı koymuş olduk
   return (
-    <StoreContext.Provider value={{stateCounter,dispatchCounter}}>
+    <StoreContext.Provider value={state}>
       {children}
     </StoreContext.Provider>
   )
